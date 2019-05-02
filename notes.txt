@@ -1,0 +1,18 @@
+ng build --prod
+docker image build -t gulci/ng-docker-app:1.0 .
+docker image ls
+docker run -p 3000:80 -d --name ng-docker-app-1 --rm gulci/ng-docker-app:1.0
+docker-compose down
+docker-compose down --rmi all
+docker-compose build
+docker-compose up --build
+docker login
+docker push gulci/ng-docker-app:1.0
+
+Staged build:
+docker image build -t ng-docker-app .
+docker run -p 3000:80 -d --name ng-docker-app-1 --rm ng-docker-app
+After adding scripts to package.json:
+npm run build:docker
+npm run stop:docker (if container already exists, it'll be removed thanks to --rm in docker run)
+npm run start:docker

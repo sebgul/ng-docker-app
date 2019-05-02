@@ -1,0 +1,9 @@
+version: '3.6'
+
+services:
+  ng-docker-app:
+    image: 'gulci/ng-docker-app:1.0'
+    #build: '.'
+    container_name: 'ng-docker-app-1'
+    ports:
+      - 3000:80
